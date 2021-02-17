@@ -7,7 +7,7 @@ def fibosum(n):
         sum = sum + new_number
         list_numbers.append(new_number)
         counter += 1
-    return "The sum of the first" + str(n) +"terms of the Fibonacci series is : " + str(sum)
+    return "The sum of the first " + str(n) +" terms of the Fibonacci series is : " + str(sum)
 
 our_number = 5
 print(fibosum(our_number))

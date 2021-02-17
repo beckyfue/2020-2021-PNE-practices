@@ -5,6 +5,3 @@ while counter<=8:
     list_numbers.append(new_number)
     counter+=1
 print(list_numbers)
-
-
-

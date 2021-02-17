@@ -13,6 +13,3 @@ my_number = 10
 print(fibon(my_number))
 my_number = 15
 print(fibon(my_number))
-
-
-
