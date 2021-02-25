@@ -31,6 +31,30 @@ def seq_count(seq):
             t += 1
     return {"A": a, "C": c, "G":g, "T": t}
 
+def seq_reverse(seq):
+    return seq[::-1]
+
+def seq_complement(seq):
+    printed = " "
+    for letter in seq:
+        if letter == "A":
+            printed += "T"
+        elif letter == "C":
+            printed += "G"
+        elif letter == "T":
+            printed += "A"
+        else:
+            printed += "C"
+    return printed
+
+def most_frequent(seq):
+    all_freq = {}
+    for character in seq:
+        if character in all_freq:
+            all_freq[character] += 1
+        else:
+            all_freq[character] = 1
+    return max(all_freq, key = all_freq.get)
 
 
 
