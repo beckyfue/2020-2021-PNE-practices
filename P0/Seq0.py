@@ -3,6 +3,7 @@ from pathlib import Path
 def seq_ping():
     print("OK")
 
+
 def take_out_first_line(seq):
     return seq[seq.find("\n") + 1:].replace("\n", "")
 
