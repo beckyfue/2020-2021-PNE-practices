@@ -8,8 +8,8 @@ def take_out_first_line(seq):
     return seq[seq.find("\n") + 1:].replace("\n", "")
 
 def seq_read_fasta(filename):
-    sequence = take_out_first_line(Path(filename).read_text())
-    return sequence
+    return take_out_first_line(Path(filename).read_text())
+
 
 
 def seq_len(seq):
