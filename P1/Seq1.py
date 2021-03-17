@@ -93,6 +93,18 @@ class Seq:
                     complement += "A"
             return complement
 
+    def frequent_base(self):
+        dict_gene = {"A": 0, "T": 0, "C": 0, "G": 0}
+        for d in self.strbases:
+            dict_gene[d] +=1
+        key_list = list(dict_gene.keys())
+        counter = list(dict_gene.values())
+        most_frequent = max(counter)
+        position = counter.index(most_frequent)
+        return key_list[position]
+
+
+
     @staticmethod
     def take_out_first_line(seq):
         return seq[seq.find("\n") + 1:].replace("\n", "")
