@@ -14,7 +14,7 @@ class Seq:
         if is_valid_sequence(strbases):
             print("New sequence created")
         else:
-            self.strbases = "Eror"
+            self.strbases = "Error"
             print("INCORRECT Sequence detected")
 
     @staticmethod

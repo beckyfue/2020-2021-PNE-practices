@@ -10,8 +10,6 @@ def take_out_first_line(seq):
 def seq_read_fasta(filename):
     return take_out_first_line(Path(filename).read_text())
 
-
-
 def seq_len(seq):
     return len(seq)
 
@@ -56,10 +54,3 @@ def most_frequent(seq):
         else:
             all_freq[character] = 1
     return max(all_freq, key = all_freq.get)
-
-
-
-
-
-
-

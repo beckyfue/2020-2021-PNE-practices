@@ -2,7 +2,7 @@ from P2.Client0 import Client
 from pathlib import Path
 from P1.Seq1 import Seq
 PRACTICE = 2
-EXERCISE = 5
+EXERCISE = 7
 
 print(f"-----| Practice {PRACTICE}, Exercise {EXERCISE} |------")
 
