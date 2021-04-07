@@ -29,6 +29,7 @@ class Client:
         s.send(str.encode(msg))
         # Receive data
         response = s.recv(2048).decode("utf-8")
+        print("From Server:", response)
         # Close the socket
         s.close()
         # Return the response
