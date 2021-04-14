@@ -1,13 +1,10 @@
 import termcolor
 from pathlib import Path
-
-
 def is_valid_sequence(strbases):
     for c in strbases:
         if c!= "A" and c!= "C" and c!= "T" and c!= "G":
             return False
     return True
-
 
 class Seq:
     NULL_SEQUENCE = "NULL"
@@ -63,6 +60,16 @@ class Seq:
                     t += 1
             return a, c, g, t
 
+    def percentage(self):
+        total = len(self.strbases)
+        a, c, g, t, = self.count_bases()
+        percentage_a = (a/total) * 100
+        percentage_c = (c / total) * 100
+        percentage_g = (g / total) * 100
+        percentage_t = (t / total) * 100
+
+        return percentage_a, percentage_c, percentage_g, percentage_t
+
     def count(self):
         a, c, g, t, = self.count_bases()
         return {"A" : a, "C" : c, "G": g, "T": t}
@@ -81,7 +88,7 @@ class Seq:
         elif self.strbases == Seq.INVALID_SEQUENCE:
             return "ERROR"
         else:
-            complement = " "
+            complement = ""
             for i in self.strbases:
                 if i == "C":
                     complement += "G"
@@ -111,10 +118,7 @@ class Seq:
 
     def read_fasta(self, filename):
         self.strbases = Seq.take_out_first_line(Path(filename).read_text())
-
-
-
-
+        return self.strbases
 
 def test_sequences():
     s1 = Seq()
