@@ -40,6 +40,7 @@ while True:
     msg = msg_raw.decode()
     formatted_message = server_utils.format_command(msg)
     formatted_message = formatted_message.split(" ")
+
     if len(formatted_message) == 1:
         command = formatted_message[0]
     else:
@@ -60,25 +61,24 @@ while True:
             server_utils.info(cs, argument)
 
     elif command == "COMP":
-        if len(formatted_message)==1:
+        if len(formatted_message) == 1:
             argument = list_sequences[0]
             server_utils.comp(cs, argument)
         else:
             server_utils.comp(cs,argument)
 
     elif command == "REV":
-        if len(formatted_message)==1:
+        if len(formatted_message) == 1:
             argument=list_sequences[0]
             server_utils.rev(cs, argument)
         else:
             server_utils.rev(cs, argument)
 
-
     elif command == "GENE":
         server_utils.gene(cs,argument)
 
     else:
-        response = "Not available command"
+        response = "This command is not available"
         cs.send(str(response).encode())
     # -- Close the data socket
     cs.close()

@@ -5,14 +5,13 @@ def print_colored(message, color):
     import colorama
     colorama.init(strip="False")
     print("To server: ", end="")
-
     print(termcolor.colored(message, color))
 
 def format_command(command):
     return command.replace("\n", "").replace("\r", "")
 
 def ping(cs):
-    print_colored("PING command", "green")
+    print_colored("PING", "green")
     response = "OK!"
     cs.send(str(response).encode())
     print(response)
@@ -53,6 +52,6 @@ def rev(cs, argument):
 def gene(cs, argument):
     print_colored("GENE", "yellow")
     sequence = Seq.Seq()
-    sequence.read_fasta(argument)
+    sequence.read_fasta(argument + ".txt")
     print(sequence)
     cs.send(str(sequence).encode())
