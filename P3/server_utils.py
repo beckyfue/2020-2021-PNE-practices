@@ -27,13 +27,13 @@ def info(cs, argument):
     print_colored("INFO", "yellow")
     sequence = Seq.Seq(argument)
     response = "Sequence: " + str(sequence) + "\nTotal length: " + str(sequence.len())
-    info_sequence_a = "\nA: " + str(sequence.count_bases()[0]) + " (" + str(sequence.percentage()[0]) + "%)\n"
-    info_sequence_c = "C: " + str(sequence.count_bases()[1]) + " (" + str(sequence.percentage()[1]) + "%)\n"
-    info_sequence_g = "G: " + str(sequence.count_bases()[2]) + " (" + str(sequence.percentage()[2]) + "%)\n"
-    info_sequence_t = "T: " + str(sequence.count_bases()[3]) + " (" + str(sequence.percentage()[3]) + "%)\n"
-    solution = response + info_sequence_a + info_sequence_c + info_sequence_g + info_sequence_t
-    print(solution)
-    cs.send(str(solution).encode())
+    sol_a = "\nA: " + str(sequence.count_bases()[0]) + " (" + str(sequence.percentage()[0]) + "%)\n"
+    sol_c = "C: " + str(sequence.count_bases()[1]) + " (" + str(sequence.percentage()[1]) + "%)\n"
+    sol_g = "G: " + str(sequence.count_bases()[2]) + " (" + str(sequence.percentage()[2]) + "%)\n"
+    sol_t = "T: " + str(sequence.count_bases()[3]) + " (" + str(sequence.percentage()[3]) + "%)\n"
+    answer = response + sol_a + sol_c + sol_g + sol_t
+    print(answer)
+    cs.send(str(answer).encode())
 
 def comp(cs, argument):
     print_colored("COMP", "yellow")
