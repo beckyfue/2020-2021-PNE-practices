@@ -3,9 +3,9 @@ import Seq1 as Seq
 def print_colored(message, color):
     import termcolor
     import colorama
-
     colorama.init(strip="False")
     print("To server: ", end="")
+
     print(termcolor.colored(message, color))
 
 def format_command(command):
@@ -48,6 +48,7 @@ def rev(cs, argument):
     response = sequence.reverse()
     print(response)
     cs.send(str(response).encode())
+
 
 def gene(cs, argument):
     print_colored("GENE", "yellow")
