@@ -55,4 +55,3 @@ def gene(cs, argument):
     sequence.read_fasta(argument)
     print(sequence)
     cs.send(str(sequence).encode())
-
