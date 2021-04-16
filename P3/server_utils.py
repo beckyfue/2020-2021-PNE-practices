@@ -27,25 +27,25 @@ def info(cs, argument):
     sequence = Seq.Seq(argument)
     response = "Sequence: " + str(sequence) + "\nTotal length: " + str(sequence.len())
 
-    sol_a = "\nA: " + str(sequence.count_bases()[0]) + " (" + str(sequence.percentage()[0]) + "%)\n"
-    sol_c = "C: " + str(sequence.count_bases()[1]) + " (" + str(sequence.percentage()[1]) + "%)\n"
-    sol_g = "G: " + str(sequence.count_bases()[2]) + " (" + str(sequence.percentage()[2]) + "%)\n"
-    sol_t = "T: " + str(sequence.count_bases()[3]) + " (" + str(sequence.percentage()[3]) + "%)\n"
-    answer = response + sol_a + sol_c + sol_g + sol_t
-    print(answer)
-    cs.send(str(answer).encode())
-
     # other possible solution
-    # list_letters = ["A", "C", "G", "T"]
-    # print(response)
-    # for i in range(0, 4):
-    # ans = " "
-    # sol = "\n" + list_letters[i] + ":" + str(sequence.count_bases()[i]) + " (" + str(sequence.percentage()[i]) + "%)"
-    # print(sol)
-    # ans += str(sol)
-    # i += 1
-    # total_answer = response + str(ans)
-    # cs.send(str(total_answer).encode())
+    #sol_a = "\nA: " + str(sequence.count_bases()[0]) + " (" + str(sequence.percentage()[0]) + "%)\n"
+    #sol_c = "C: " + str(sequence.count_bases()[1]) + " (" + str(sequence.percentage()[1]) + "%)\n"
+    #sol_g = "G: " + str(sequence.count_bases()[2]) + " (" + str(sequence.percentage()[2]) + "%)\n"
+    #sol_t = "T: " + str(sequence.count_bases()[3]) + " (" + str(sequence.percentage()[3]) + "%)\n"
+    #answer = response + sol_a + sol_c + sol_g + sol_t
+    #print(answer)
+    #cs.send(str(answer).encode())
+
+
+    list_letters = ["A", "C", "G", "T"]
+    print(response)
+    sol = " "
+    for i in range(0, 4):
+        sol += "\n" + list_letters[i] + ":" + str(sequence.count_bases()[i]) + " (" + str(sequence.percentage()[i]) + "%)"
+        i += 1
+    print(sol)
+    ans = response + sol
+    cs.send(str(ans).encode())
 
 def comp(cs, argument):
     print_colored("COMP", "yellow")
