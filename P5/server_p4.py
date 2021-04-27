@@ -71,6 +71,9 @@ def process_client(s):
         body = read_html_file(HTML_ASSETS + "error.html")
 
 
+
+
+
    # if path_name == "/info/A":
     #    body = read_html_file(HTML_ASSETS + "A.html")
     #elif path_name == "/info/C":
