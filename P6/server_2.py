@@ -1,26 +1,17 @@
 import http.server
-import pathlib
 import socketserver
 import termcolor
-import jinja2
 from urllib.parse import urlparse, parse_qs
 import server_utils as su
 
 
 PORT = 8080
 
+OPERATIONS_LIST = ["Info", "Comp", "Rev"]
+
 LIST_SEQUENCES = ["ACGTTTTGGAAAAACTGA", "AGTTTTCCCAA", "TTGCAGAAGTC", "GGGGGCCCCCTTTTTAAAAA", "CCTTGGTTGAACAACCGT"]
 
 LIST_GENES = ["ADA", "FRAT1", "FXN", "RNU6_269P", "U5"]
-def read_html_file(filename):
-    content = pathlib.Path(filename).read_text()
-    return content
-
-def read_template_html_file(filename):
-    content = jinja2.Template(pathlib.Path(filename).read_text())
-    return content
-
-
 
 BASES_INFORMATION = {
 "A":{"link":"https://en.wikipedia.org/wiki/Adenine",
@@ -71,6 +62,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         if path_name == "/":
             context["n_sequences"] = len(LIST_SEQUENCES)
             context["list_genes"] = LIST_GENES
+            context["operations_list"]=OPERATIONS_LIST
             contents = su.read_template_html_file("./html/index.html").render(context=context)
         elif path_name == "/test":
             contents = su.read_template_html_file("./html/test.html").render()
@@ -81,10 +73,16 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             contents = su.get(LIST_SEQUENCES, number_sequence)
         elif path_name == "/gene":
             gene = arguments["gene"][0]
-            contents= su.gene(gene)
-
+            contents = su.gene(gene)
         elif path_name == "/operation":
             sequence = arguments["sequence"][0]
+            operation = arguments["Result"][0]
+            if operation == "Info":
+                contents = su.info(sequence)
+            elif operation == "Comp":
+                contents = su.comp(sequence)
+            else:
+                contents = su.rev(sequence)
 
         else:
             contents = su.read_template_html_file("./html/error.html").render()
