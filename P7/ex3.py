@@ -23,7 +23,3 @@ if response.status == 200:
     print("Bases:", response["seq"])
 elif response.status == 404:
     print("Check if the ENDPOINT was correctly written!!")
-
-
-
-
