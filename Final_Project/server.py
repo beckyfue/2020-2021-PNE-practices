@@ -32,60 +32,79 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             contents = read_template_html_file("index.html").render()
 
         elif path_name == "/listSpecies":
-            ENDPOINT = "info/species"
-            connection = http.client.HTTPConnection(SERVER)
-            connection.request("GET", ENDPOINT + PARAMS)
-            response = connection.getresponse().read().decode()
-            limit = arguments["limit"][0]
-            dictionary_response = json.loads(response)
-            dictionary_values = dictionary_response.values()
-            list_species =[]
-            for dictionary in dictionary_values:
-                for element in dictionary:
-                    species = element["common_name"]
-                    list_species.append(species)
-            context = {}
-            context["input_number"] = limit
-            list_final_species = []
             try:
-                integer_limit = int(limit)
-            except ValueError:
+                ENDPOINT = "info/species"
+                connection = http.client.HTTPConnection(SERVER)
+                connection.request("GET", ENDPOINT + PARAMS)
+                response = connection.getresponse().read().decode()
+                limit = arguments["limit"][0]
+                dictionary_response = json.loads(response)
+                dictionary_values = dictionary_response.values()
+                list_species =[]
+                for dictionary in dictionary_values:
+                    for element in dictionary:
+                        species = element["common_name"]
+                        list_species.append(species)
+                context = {}
+                context["input_number"] = limit
+                list_final_species = []
+                try:
+                    integer_limit = int(limit)
+                except ValueError:
+                    contents = read_template_html_file("error.html").render()
+
+                for number in range(0,integer_limit):
+                    list_final_species.append(list_species[number])
+
+                context["length"] = len(list_species)
+                context["species_list"] = list_final_species
+                contents = read_template_html_file("list_species.html").render(context=context)
+            except:
                 contents = read_template_html_file("error.html").render()
 
-            for number in range(0,integer_limit):
-                list_final_species.append(list_species[number])
-
-            context["length"] = len(list_species)
-            context["species_list"] = list_final_species
-            contents = read_template_html_file("list_species.html").render(context=context)
 
         elif path_name == "/karyotype":
-            species = arguments["specie"][0].replace(" ", "_")
-            ENDPOINT = "info/assembly/" + species
-            connection = http.client.HTTPConnection(SERVER)
-            connection.request("GET", ENDPOINT + PARAMS)
-            response = connection.getresponse().read().decode()
-            dictionary_response = json.loads(response)
-            karyotype = dictionary_response.get("karyotype")
-            context = {}
-            context["list_karyotype"] = karyotype
-            contents = read_template_html_file("karyotype.html").render(context=context)
+            try:
+                species = arguments["specie"][0].replace(" ", "_")
+                ENDPOINT = "info/assembly/" + species
+                connection = http.client.HTTPConnection(SERVER)
+                connection.request("GET", ENDPOINT + PARAMS)
+                response = connection.getresponse().read().decode()
+                dictionary_response = json.loads(response)
+                karyotype = dictionary_response.get("karyotype")
+                context = {}
+                context["list_karyotype"] = karyotype
+                contents = read_template_html_file("karyotype.html").render(context=context)
+            except:
+                contents = read_template_html_file("error.html").render()
 
 
         elif path_name == "/chromosomeLength":
-            species = arguments["specie"][0].replace(" ", "_")
-            ENDPOINT = "info/assembly/" + species
-            connection = http.client.HTTPConnection(SERVER)
-            connection.request("GET", ENDPOINT + PARAMS)
-            response = connection.getresponse().read().decode()
-            dictionary_response = json.loads(response)
-            list_possible_values = dictionary_response["top_level_region"]
-            print(list_possible_values)
-            context = {}
-            contents = read_template_html_file("chromosome.html").render(context=context)
+            try:
+                species = arguments["specie"][0].replace(" ", "_")
+                ENDPOINT = "info/assembly/" + species
+                connection = http.client.HTTPConnection(SERVER)
+                connection.request("GET", ENDPOINT + PARAMS)
+                response = connection.getresponse().read().decode()
+                dictionary_response = json.loads(response)
+                list_possible_values = dictionary_response["top_level_region"]
+                new_list = []
+                for dictionaries in list_possible_values:
+                    if "chromosome" in dictionaries.values():
+                        new_list.append(dictionaries)
+                user_chromosome = arguments["chromo"][0]
+                for dictionary in new_list:
+                    if dictionary["name"] == user_chromosome:
+                        length = dictionary["length"]
+
+                context = {}
+                context["length_chromosome"] = length
+                contents = read_template_html_file("chromosome.html").render(context=context)
+            except:
+                contents = read_template_html_file("error.html").render()
 
         else:
-            contents = "Error"
+            contents = read_template_html_file("error.html").render()
 
 
 
