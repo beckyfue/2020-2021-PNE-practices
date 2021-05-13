@@ -4,27 +4,27 @@
     <meta charset="UTF-8">
     <title> Welcome!! </title>
 </head>
-<body>
+<body style="background-color: lightyellow;">
     <h1> Browsing Human and Vertebrates Genome </h1>
     <h2>Basic level services</h2>
     <p> 1) List of species in the genome database </p>
-    <form action="limit" method="get">
-        Limit: <input type="text" name="number">
+    <form action="listSpecies" method="get">
+        Limit: <input type="text" name="limit">
         <br> <br> <input type="submit" value="Send">
     </form>
 
     <p> 2) Information about the karyotype: </p>
-    <form action="info" method="get">
-        Select the species: <input type="text" name="species">
+    <form action="karyotype" method="get">
+        Select the species: <input type="text" name="specie">
         <br> <br> <input type="submit" value="Send">
     </form>
 
     <p> 3) Chromosome length </p>
-    <form action="length" method="get">
-        Select the species: <input type="text" name="species">
+    <form action="chromosomeLength" method="get">
+        Select the species: <input type="text" name="specie">
         <form action="length" method="get"> <br><br>
-        Select a chromosome: <input type="text" name="chromosome">
+        Select a chromosome: <input type="text" name="chromo">
         <br> <br> <input type="submit" value="Send">
     </form> </form>
-</body>
+</>
 </html>
