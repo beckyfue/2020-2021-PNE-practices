@@ -27,7 +27,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         print("Resource requested: ", path_name)
         print("Parameters: ", arguments)
 
-
+        context = {}
         if path_name == "/":
             contents = read_template_html_file("index.html").render()
 
@@ -45,7 +45,6 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                     for element in dictionary:
                         species = element["common_name"]
                         list_species.append(species)
-                context = {}
                 context["input_number"] = limit
                 list_final_species = []
                 try:
@@ -72,7 +71,6 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 response = connection.getresponse().read().decode()
                 dictionary_response = json.loads(response)
                 karyotype = dictionary_response.get("karyotype")
-                context = {}
                 context["list_karyotype"] = karyotype
                 contents = read_template_html_file("karyotype.html").render(context=context)
             except:
@@ -93,11 +91,11 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                     if "chromosome" in dictionaries.values():
                         new_list.append(dictionaries)
                 user_chromosome = arguments["chromo"][0]
+                user_chromosome = user_chromosome.upper()
                 for dictionary in new_list:
                     if dictionary["name"] == user_chromosome:
                         length = dictionary["length"]
 
-                context = {}
                 context["length_chromosome"] = length
                 contents = read_template_html_file("chromosome.html").render(context=context)
             except:
