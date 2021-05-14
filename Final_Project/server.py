@@ -115,11 +115,68 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 response = connection.getresponse().read().decode()
                 dictionary_response = json.loads(response)
                 seq = dictionary_response["seq"]
-                length_sequence = len(seq)
-                print(length_sequence)
-                context["length_sequence"] = length_sequence
+                context["seq"] = seq
                 contents = read_template_html_file("gene_sequence.html").render(context=context)
 
+            except:
+                contents = read_template_html_file("error.html").render()
+
+        elif path_name == "/geneInfo":
+            try:
+                gene = arguments["gene_info"][0]
+                value_gene = DICT_GENES[gene]
+                ENDPOINT = "sequence/id/" + value_gene
+                connection = http.client.HTTPConnection(SERVER)
+                connection.request("GET", ENDPOINT + PARAMS)
+                response = connection.getresponse().read().decode()
+                dictionary_response = json.loads(response)
+                seq = dictionary_response["seq"]
+                length_sequence = len(seq)
+                start = seq[0]
+                end= seq[0]
+                context["length_sequence"] = length_sequence
+                context["start"] = start
+                context["end"] = end
+                Id = dictionary_response["id"]
+                context["ID"] = Id
+                chromosome_name = dictionary_response["desc"]
+                context["chromosome_name"] = chromosome_name
+                contents = read_template_html_file("gene_info.html").render(context=context)
+
+            except:
+                contents = read_template_html_file("error.html").render()
+
+        elif path_name == "/geneCalc":
+            try:
+                gene = arguments["gene_calculations"][0]
+                value_gene = DICT_GENES[gene]
+                ENDPOINT = "sequence/id/" + value_gene
+                connection = http.client.HTTPConnection(SERVER)
+                connection.request("GET", ENDPOINT + PARAMS)
+                response = connection.getresponse().read().decode()
+                dictionary_response = json.loads(response)
+                seq = dictionary_response["seq"]
+                total = len(seq)
+                a, c, g, t = 0, 0, 0, 0
+                for base in seq:
+                    if base == "C":
+                        c += 1
+                    elif base == "G":
+                        g += 1
+                    elif base == "A":
+                        a += 1
+                    elif base == "T":
+                        t += 1
+                percentage_a = (a / total) * 100
+                percentage_c = (c / total) * 100
+                percentage_g = (g / total) * 100
+                percentage_t = (t / total) * 100
+                context["percentage_a"] = percentage_a
+                context["percentage_c"] = percentage_c
+                context["percentage_g"] = percentage_g
+                context["percentage_t"] = percentage_t
+                context["total_length"] = total
+                contents = read_template_html_file("gene_calculations.html").render(context=context)
             except:
                 contents = read_template_html_file("error.html").render()
 
