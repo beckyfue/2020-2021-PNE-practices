@@ -10,6 +10,10 @@ import json
 PORT = 8080
 SERVER = "rest.ensembl.org"
 PARAMS = "?content-type=application/json"
+DICT_GENES= {"FRAT1": "ENSG00000165879", "ADA": "ENSG00000196839", "FXN": "ENSG00000165060",
+"RNU6_269P": "ENSG00000212379", "MIR633": "ENSG00000207552", "TTTY4C":"ENSG00000228296",
+"RBMY2YP":"ENSG00000227633", "FGFR3": "ENSG00000068078", "KDR": "ENSMUSG000000629602", "ANK2":"ENSG00000145362"
+}
 
 socketserver.TCPServer.allow_reuse_address = True
 
@@ -98,6 +102,24 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
                 context["length_chromosome"] = length
                 contents = read_template_html_file("chromosome.html").render(context=context)
+            except:
+                contents = read_template_html_file("error.html").render()
+
+        elif path_name == "/geneSeq":
+            try:
+                gene = arguments["gene"][0]
+                value_gene = DICT_GENES[gene]
+                ENDPOINT = "sequence/id/" + value_gene
+                connection = http.client.HTTPConnection(SERVER)
+                connection.request("GET", ENDPOINT + PARAMS)
+                response = connection.getresponse().read().decode()
+                dictionary_response = json.loads(response)
+                seq = dictionary_response["seq"]
+                length_sequence = len(seq)
+                print(length_sequence)
+                context["length_sequence"] = length_sequence
+                contents = read_template_html_file("gene_sequence.html").render(context=context)
+
             except:
                 contents = read_template_html_file("error.html").render()
 
