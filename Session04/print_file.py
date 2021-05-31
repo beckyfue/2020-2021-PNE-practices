@@ -1,6 +1,6 @@
 from pathlib import Path
 
-# -- Constant with the new of the file to open
+# -- Constant with the name of the file to open
 FILENAME = "../P0/sequences/RNU6_269P.txt"
 
 # -- Open and read the file

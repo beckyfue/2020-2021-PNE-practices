@@ -125,5 +125,3 @@ def test_sequences():
     s2 = Seq("ACTGA")
     s3 = Seq("Invalid Sequence")
     return s1, s2, s3
-
-
