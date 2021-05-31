@@ -1,0 +1,363 @@
+---> / endpoint
+
+*Input
+    http://127.0.0.1:8080/
+*Output
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Welcome!! </title>
+</head>
+<body style="background-color: lightyellow;">
+    <h1> Browsing Human and Vertebrates Genome </h1>
+    <h2>Basic level services</h2>
+    <p> 1) List of species in the genome database </p>
+    <form action="listSpecies" method="get">
+        Limit: <input type="text" name="limit">
+        <br> <br> <input type="submit" value="Send">
+    </form>
+
+    <p> 2) Information about the karyotype: </p>
+    <form action="karyotype" method="get">
+        Select the species: <input type="text" name="specie">
+        <br> <br> <input type="submit" value="Send">
+    </form>
+
+    <p> 3) Chromosome length </p>
+    <form action="chromosomeLength" method="get">
+        Select the species: <input type="text" name="specie">
+        <form action="length" method="get"> <br><br>
+        Select a chromosome: <input type="text" name="chromo">
+        <br> <br> <input type="submit" value="Send">
+    </form> </form>
+    <h2>Medium level services</h2>
+    <p> 1) Sequence of human gene </p>
+    <form action="geneSeq" method="get">
+        Select a human gene: <input type="text" name="gene">
+        <br> <br> <input type="submit" value="Send">
+    </form>
+
+    <p> 2) Information about human gene: </p>
+    <form action="geneInfo" method="get">
+        Select a human gene: <input type="text" name="gene_info">
+        <br> <br> <input type="submit" value="Send">
+    </form>
+
+    <p> 3) Human gene calculations </p>
+    <form action="geneCalc" method="get">
+        Select a human gene: <input type="text" name="gene_calculations">
+        <br> <br> <input type="submit" value="Send">
+    </form>
+</html>
+
+
+- - - -> List species endpoint
+
+*TEST 1
+
+*Input:
+          http://127.0.0.1:8080/listSpecies?limit=8
+*Output:
+ <!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>LIST OF SPECIES IN THE BROWSER</title>
+  </head>
+  <body style="background-color: lightblue;">
+    <p>The total number of species in the ensembl is: 310</p>
+    <p>The limit you have selected is: 8</p>
+    <p>The names of the species are:
+      <ul>
+        <li>little spotted kiwi</li>
+    </ul>
+      <ul>
+        <li>Indian glassy fish</li>
+    </ul>
+      <ul>
+        <li>blue tit</li>
+    </ul>
+      <ul>
+        <li>narwhal</li>
+    </ul>
+      <ul>
+        <li>American beaver</li>
+    </ul>
+      <ul>
+        <li>lumpfish</li>
+    </ul>
+      <ul>
+        <li>Chinese hamster</li>
+    </ul>
+      <ul>
+        <li>channel bull blenny</li>
+    </ul>
+    </p>
+  </body>
+</html>
+
+
+
+*TEST 2
+
+
+*Input:
+    http://127.0.0.1:8080/listSpecies?limit=2
+
+*Output
+
+ <!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>LIST OF SPECIES IN THE BROWSER</title>
+  </head>
+  <body style="background-color: lightblue;">
+    <p>The total number of species in the ensembl is: 310</p>
+    <p>The limit you have selected is: 2</p>
+    <p>The names of the species are:
+      <ul>
+        <li>little spotted kiwi</li>
+    </ul>
+      <ul>
+        <li>Indian glassy fish</li>
+    </ul>
+    </p>
+  </body>
+</html>
+
+
+
+
+- - - -> Karyotype endpoint
+
+*TEST 1
+
+*Input
+        http://127.0.0.1:8080/karyotype?specie=human
+
+*Output
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>KARYOTYPE OF A SPECIFIC SPECIES</title>
+  </head>
+  <body style="background-color: lightblue;">
+   <p>The names of the chromosomes are:
+      <ul>
+     1
+    </ul>
+      <ul>
+     2
+    </ul>
+      <ul>
+     3
+    </ul>
+      <ul>
+     4
+    </ul>
+      <ul>
+     5
+    </ul>
+      <ul>
+     6
+    </ul>
+      <ul>
+     7
+    </ul>
+      <ul>
+     8
+    </ul>
+      <ul>
+     9
+    </ul>
+      <ul>
+     10
+    </ul>
+      <ul>
+     11
+    </ul>
+      <ul>
+     12
+    </ul>
+      <ul>
+     13
+    </ul>
+      <ul>
+     14
+    </ul>
+      <ul>
+     15
+    </ul>
+      <ul>
+     16
+    </ul>
+      <ul>
+     17
+    </ul>
+      <ul>
+     18
+    </ul>
+      <ul>
+     19
+    </ul>
+      <ul>
+     20
+    </ul>
+      <ul>
+     21
+    </ul>
+      <ul>
+     22
+    </ul>
+      <ul>
+     X
+    </ul>
+      <ul>
+     Y
+    </ul>
+      <ul>
+     MT
+    </ul>
+    </p>
+  </body>
+</html>
+
+
+
+
+*TEST 2
+
+
+*Input
+        http://127.0.0.1:8080/karyotype?specie=rat
+
+*Output
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>KARYOTYPE OF A SPECIFIC SPECIES</title>
+  </head>
+  <body style="background-color: lightblue;">
+   <p>The names of the chromosomes are:
+      <ul>
+     1
+    </ul>
+      <ul>
+     2
+    </ul>
+      <ul>
+     3
+    </ul>
+      <ul>
+     4
+    </ul>
+      <ul>
+     5
+    </ul>
+      <ul>
+     6
+    </ul>
+      <ul>
+     7
+    </ul>
+      <ul>
+     8
+    </ul>
+      <ul>
+     9
+    </ul>
+      <ul>
+     10
+    </ul>
+      <ul>
+     11
+    </ul>
+      <ul>
+     12
+    </ul>
+      <ul>
+     13
+    </ul>
+      <ul>
+     14
+    </ul>
+      <ul>
+     15
+    </ul>
+      <ul>
+     16
+    </ul>
+      <ul>
+     17
+    </ul>
+      <ul>
+     18
+    </ul>
+      <ul>
+     19
+    </ul>
+      <ul>
+     20
+    </ul>
+      <ul>
+     X
+    </ul>
+      <ul>
+     Y
+    </ul>
+      <ul>
+     MT
+    </ul>
+    </p>
+  </body>
+</html>
+
+
+
+
+
+- - - -> Chromosome length endpoint
+
+
+*TEST 1
+
+
+*Input
+    http://127.0.0.1:8080/chromosomeLength?specie=human&chromo=7
+
+*Output
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>LENGTH OF THE SELECTED CHROMOSOME</title>
+  </head>
+  <body style="background-color: lightblue;">
+    <p>The length of the chromosome is: 159345973</p>
+  </body>
+</html>
+
+
+
+*TEST 2
+
+
+*Input
+    http://127.0.0.1:8080/chromosomeLength?specie=rat&chromo=X
+
+*Output
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>LENGTH OF THE SELECTED CHROMOSOME</title>
+  </head>
+  <body style="background-color: lightblue;">
+    <p>The length of the chromosome is: 159970021</p>
+  </body>
+</html>
