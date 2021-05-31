@@ -1,0 +1,352 @@
+BASIC LEVEL NO JSON
+
+---> List Species Endpoint
+
+*TEST 1
+
+*Input
+    http://127.0.0.1:8080/listSpecies?limit=5
+
+*Output
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>LIST OF SPECIES IN THE BROWSER</title>
+  </head>
+  <body style="background-color: lightblue;">
+    <p>The total number of species in the ensembl is: 310</p>
+    <p>The limit you have selected is: 5</p>
+    <p>The names of the species are:
+
+      <ul>
+        <li>little spotted kiwi</li>
+    </ul>
+
+      <ul>
+        <li>Indian glassy fish</li>
+    </ul>
+
+      <ul>
+        <li>blue tit</li>
+    </ul>
+
+      <ul>
+        <li>narwhal</li>
+    </ul>
+
+      <ul>
+        <li>American beaver</li>
+    </ul>
+
+    </p>
+
+  </body>
+</html>
+
+
+
+
+*TEST 2
+
+*Input
+    http://127.0.0.1:8080/listSpecies?limit=1
+
+*Output
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>LIST OF SPECIES IN THE BROWSER</title>
+  </head>
+  <body style="background-color: lightblue;">
+    <p>The total number of species in the ensembl is: 310</p>
+    <p>The limit you have selected is: 1</p>
+    <p>The names of the species are:
+
+      <ul>
+        <li>little spotted kiwi</li>
+    </ul>
+
+    </p>
+
+  </body>
+</html>
+
+
+---> Karyotype Endpoint
+
+*TEST 1
+
+*Input
+    http://127.0.0.1:8080/karyotype?specie=human
+
+*Output
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>KARYOTYPE OF A SPECIFIC SPECIES</title>
+  </head>
+  <body style="background-color: lightblue;">
+   <p>The names of the chromosomes are:
+
+      <ul>
+     1
+    </ul>
+
+      <ul>
+     2
+    </ul>
+
+      <ul>
+     3
+    </ul>
+
+      <ul>
+     4
+    </ul>
+
+      <ul>
+     5
+    </ul>
+
+      <ul>
+     6
+    </ul>
+
+      <ul>
+     7
+    </ul>
+
+      <ul>
+     8
+    </ul>
+
+      <ul>
+     9
+    </ul>
+
+      <ul>
+     10
+    </ul>
+
+      <ul>
+     11
+    </ul>
+
+      <ul>
+     12
+    </ul>
+
+      <ul>
+     13
+    </ul>
+
+      <ul>
+     14
+    </ul>
+
+      <ul>
+     15
+    </ul>
+
+      <ul>
+     16
+    </ul>
+
+      <ul>
+     17
+    </ul>
+
+      <ul>
+     18
+    </ul>
+
+      <ul>
+     19
+    </ul>
+
+      <ul>
+     20
+    </ul>
+
+      <ul>
+     21
+    </ul>
+
+      <ul>
+     22
+    </ul>
+
+      <ul>
+     X
+    </ul>
+
+      <ul>
+     Y
+    </ul>
+
+      <ul>
+     MT
+    </ul>
+
+    </p>
+  </body>
+</html>
+
+
+
+*TEST 2
+
+*Input
+    http://127.0.0.1:8080/karyotype?specie=rat
+
+*Output
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>KARYOTYPE OF A SPECIFIC SPECIES</title>
+  </head>
+  <body style="background-color: lightblue;">
+   <p>The names of the chromosomes are:
+
+      <ul>
+     1
+    </ul>
+
+      <ul>
+     2
+    </ul>
+
+      <ul>
+     3
+    </ul>
+
+      <ul>
+     4
+    </ul>
+
+      <ul>
+     5
+    </ul>
+
+      <ul>
+     6
+    </ul>
+
+      <ul>
+     7
+    </ul>
+
+      <ul>
+     8
+    </ul>
+
+      <ul>
+     9
+    </ul>
+
+      <ul>
+     10
+    </ul>
+
+      <ul>
+     11
+    </ul>
+
+      <ul>
+     12
+    </ul>
+
+      <ul>
+     13
+    </ul>
+
+      <ul>
+     14
+    </ul>
+
+      <ul>
+     15
+    </ul>
+
+      <ul>
+     16
+    </ul>
+
+      <ul>
+     17
+    </ul>
+
+      <ul>
+     18
+    </ul>
+
+      <ul>
+     19
+    </ul>
+
+      <ul>
+     20
+    </ul>
+
+      <ul>
+     X
+    </ul>
+
+      <ul>
+     Y
+    </ul>
+
+      <ul>
+     MT
+    </ul>
+
+    </p>
+  </body>
+</html>
+
+----> Chromosome Length Endpoint
+
+*TEST 1
+
+*Input
+    http://127.0.0.1:8080/chromosomeLength?specie=human&chromo=8
+
+*Output
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>LENGTH OF THE SELECTED CHROMOSOME</title>
+  </head>
+  <body style="background-color: lightblue;">
+    <p>The length of the chromosome is: 145138636</p>
+  </body>
+</html>
+
+
+*TEST 2
+
+*Input
+    http://127.0.0.1:8080/chromosomeLength?specie=rat&chromo=8
+
+*Output
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>LENGTH OF THE SELECTED CHROMOSOME</title>
+  </head>
+  <body style="background-color: lightblue;">
+    <p>The length of the chromosome is: 133307652</p>
+  </body>
+</html>
+
+
+
+BASIC LEVEL WITH JSON
+
