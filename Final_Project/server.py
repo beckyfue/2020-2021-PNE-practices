@@ -188,14 +188,10 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                         a += 1
                     elif base == "T":
                         t += 1
-                percentage_a = (a / total) * 100
-                percentage_c = (c / total) * 100
-                percentage_g = (g / total) * 100
-                percentage_t = (t / total) * 100
-                context["percentage_a"] = percentage_a
-                context["percentage_c"] = percentage_c
-                context["percentage_g"] = percentage_g
-                context["percentage_t"] = percentage_t
+                context["percentage_a"] = round((a / total) * 100, 3)
+                context["percentage_c"] = round((c / total) * 100, 3)
+                context["percentage_g"] = round((g / total) * 100, 3)
+                context["percentage_t"] = round((t / total) * 100, 3)
                 context["total_length"] = total
                 if "json" in arguments:
                     contents = json.dumps(context)
