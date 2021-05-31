@@ -31,6 +31,8 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         print("Parameters: ", arguments)
 
         context = {}
+        content_type = "text/html"
+
         if path_name == "/":
             contents = read_template_html_file("index.html").render()
 
@@ -60,9 +62,13 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
                 context["length"] = len(list_species)
                 context["species_list"] = list_final_species
-                contents = read_template_html_file("list_species.html").render(context=context)
+                if "json" in arguments:
+                    contents = json.dumps(context)
+                    content_type = "application/json"
+                else:
+                    contents = read_template_html_file("list_species.html").render(context=context)
             except:
-                contents = read_template_html_file("error.html").render()
+                    contents = read_template_html_file("error.html").render()
 
 
         elif path_name == "/karyotype":
@@ -186,7 +192,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         self.send_response(200)  # -- Status line: OK!
 
         # Define the content-type header:
-        self.send_header('Content-Type', 'text/html')
+        self.send_header('Content-Type', content_type)
         self.send_header('Content-Length', len(contents.encode()))
 
         # The header is finished

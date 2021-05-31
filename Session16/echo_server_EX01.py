@@ -28,13 +28,13 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         # Read the index from the file
         print(self.path)
         if self.path == "/":
-            contents = Path(HTML_ASSETS + '/form-1.html').read_text()
+            contents = Path(HTML_ASSETS + '/form_1.html').read_text()
         elif self.path.startswith("/echo"):
             message = parse_qs(urlparse(self.path).query)['msg'][0]
             print(message)
             contents = read_template_html(HTML_ASSETS + '/template_jinja.html').render(msg=message)
         else:
-            contents = Path(HTML_ASSETS + '/Error.html').read_text()
+            contents = Path('/error.html').read_text()
 
         # Generating the response message
         self.send_response(200)  # -- Status line: OK!

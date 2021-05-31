@@ -1,4 +1,3 @@
-[16:55] Rafael Villén Galera
 import http.server
 import socketserver
 import termcolor
@@ -24,7 +23,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         # Read the index from the file
         print(self.path)
         if self.path == "/":
-            contents = Path(HTML_ASSETS + '/form-2.html').read_text()
+            contents = Path(HTML_ASSETS + '/form_2.html').read_text()
         elif self.path.startswith("/echo"):
             query = parse_qs(urlparse(self.path).query)
             message = query["msg"][0]
