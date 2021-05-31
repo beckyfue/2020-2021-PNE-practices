@@ -85,7 +85,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                     contents = json.dumps(context)
                     content_type = "application/json"
                 else:
-                    contents = read_template_html_file("list_species.html").render(context=context)
+                    contents = read_template_html_file("karyotype.html").render(context=context)
 
             except:
                 contents = read_template_html_file("error.html").render()
@@ -111,7 +111,11 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                         length = dictionary["length"]
 
                 context["length_chromosome"] = length
-                contents = read_template_html_file("chromosome.html").render(context=context)
+                if "json" in arguments:
+                    contents = json.dumps(context)
+                    content_type = "application/json"
+                else:
+                    contents = read_template_html_file("chromosome.html").render(context=context)
             except:
                 contents = read_template_html_file("error.html").render()
 
@@ -126,7 +130,11 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 dictionary_response = json.loads(response)
                 seq = dictionary_response["seq"]
                 context["seq"] = seq
-                contents = read_template_html_file("gene_sequence.html").render(context=context)
+                if "json" in arguments:
+                    contents = json.dumps(context)
+                    content_type = "application/json"
+                else:
+                    contents = read_template_html_file("gene_sequence.html").render(context=context)
 
             except:
                 contents = read_template_html_file("error.html").render()
@@ -150,7 +158,11 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 context["start"] = final_chromosome_name[3]
                 context["end"] = final_chromosome_name[4]
                 context["chromosome_name"] = final_chromosome_name[1]
-                contents = read_template_html_file("gene_info.html").render(context=context)
+                if "json" in arguments:
+                    contents = json.dumps(context)
+                    content_type = "application/json"
+                else:
+                    contents = read_template_html_file("gene_info.html").render(context=context)
 
             except:
                 contents = read_template_html_file("error.html").render()
@@ -185,7 +197,11 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 context["percentage_g"] = percentage_g
                 context["percentage_t"] = percentage_t
                 context["total_length"] = total
-                contents = read_template_html_file("gene_calculations.html").render(context=context)
+                if "json" in arguments:
+                    contents = json.dumps(context)
+                    content_type = "application/json"
+                else:
+                    contents = read_template_html_file("gene_calculations.html").render(context=context)
             except:
                 contents = read_template_html_file("error.html").render()
 

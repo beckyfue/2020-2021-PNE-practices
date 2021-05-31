@@ -46,5 +46,51 @@ except ConnectionRefusedError:
         print("ERROR! Cannot connect to the Server")
         exit()
 
+try:
+    ARGUMENTS = "?specie=human&chromo=4&json=1"
+    PATH_NAME = "/chromosomeLength"
+    data = client(ARGUMENTS, PATH_NAME)
+    print("The length of the chromosome is: ", data["length_chromosome"])
+
+except ConnectionRefusedError:
+        print("ERROR! Cannot connect to the Server")
+        exit()
+
+try:
+    ARGUMENTS = "?gene=FRAT1&json=1"
+    PATH_NAME = "/geneSeq"
+    data = client(ARGUMENTS, PATH_NAME)
+    print("The sequence of this gene is: ", data["seq"])
+
+except ConnectionRefusedError:
+        print("ERROR! Cannot connect to the Server")
+        exit()
+
+try:
+    ARGUMENTS = "?gene_info=FRAT1&json=1"
+    PATH_NAME = "/geneInfo"
+    data = client(ARGUMENTS, PATH_NAME)
+    print("The start of this gene is:", data["start"])
+    print("The end of this gene is:", data["end"])
+    print("The length of this gene is:", data["length_sequence"])
+    print("The ID of this gene is:", data["ID"])
+    print("This gene is found in:", data["chromosome_name"])
+
+except ConnectionRefusedError:
+        print("ERROR! Cannot connect to the Server")
+        exit()
+
+try:
+    ARGUMENTS = "?gene_calculations=FRAT1&json=1"
+    PATH_NAME = "/geneCalc"
+    data = client(ARGUMENTS, PATH_NAME)
+    print("The length of this gene is: ", data["total_length"])
+    print("The % of base A is: ", data["percentage_a"])
+    print("The % of base C is: ", data["percentage_c"])
+    print("The % of base G is: ", data["percentage_g"])
+    print("The % of base T is: ", data["percentage_t"])
 
 
+except ConnectionRefusedError:
+        print("ERROR! Cannot connect to the Server")
+        exit()
