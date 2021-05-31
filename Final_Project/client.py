@@ -36,4 +36,15 @@ except ConnectionRefusedError:
         print("ERROR! Cannot connect to the Server")
         exit()
 
+try:
+    ARGUMENTS = "?specie=human&json=1"
+    PATH_NAME = "/karyotype"
+    data = client(ARGUMENTS, PATH_NAME)
+    print("The names of the chromosomes are: ", data["list_karyotype"])
+
+except ConnectionRefusedError:
+        print("ERROR! Cannot connect to the Server")
+        exit()
+
+
 

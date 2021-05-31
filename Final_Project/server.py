@@ -81,7 +81,12 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 dictionary_response = json.loads(response)
                 karyotype = dictionary_response.get("karyotype")
                 context["list_karyotype"] = karyotype
-                contents = read_template_html_file("karyotype.html").render(context=context)
+                if "json" in arguments:
+                    contents = json.dumps(context)
+                    content_type = "application/json"
+                else:
+                    contents = read_template_html_file("list_species.html").render(context=context)
+
             except:
                 contents = read_template_html_file("error.html").render()
 
