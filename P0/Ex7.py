@@ -1,6 +1,5 @@
 import Seq0
 
-ID = "U5.txt"
 
 FOLDER = "./sequences/"
 ID = "U5.txt"

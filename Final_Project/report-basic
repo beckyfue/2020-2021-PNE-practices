@@ -1,4 +1,5 @@
 ---> / endpoint
+*TEST 1
 
 *Input
     http://127.0.0.1:8080/
@@ -128,6 +129,185 @@
 </html>
 
 
+*TEST 3
+
+
+*Input
+
+    http://127.0.0.1:8080/listSpecies?limit=22
+
+*Output
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>LIST OF SPECIES IN THE BROWSER</title>
+  </head>
+  <body style="background-color: lightblue;">
+    <p>The total number of species in the ensembl is: 310</p>
+    <p>The limit you have selected is: 22</p>
+    <p>The names of the species are:
+
+      <ul>
+        <li>little spotted kiwi</li>
+    </ul>
+
+      <ul>
+        <li>Indian glassy fish</li>
+    </ul>
+
+      <ul>
+        <li>blue tit</li>
+    </ul>
+
+      <ul>
+        <li>narwhal</li>
+    </ul>
+
+      <ul>
+        <li>American beaver</li>
+    </ul>
+
+      <ul>
+        <li>lumpfish</li>
+    </ul>
+
+      <ul>
+        <li>Chinese hamster</li>
+    </ul>
+
+      <ul>
+        <li>channel bull blenny</li>
+    </ul>
+
+      <ul>
+        <li>Golden Hamster</li>
+    </ul>
+
+      <ul>
+        <li>wild yak</li>
+    </ul>
+
+      <ul>
+        <li>Siamese fighting fish</li>
+    </ul>
+
+      <ul>
+        <li>eastern happy</li>
+    </ul>
+
+      <ul>
+        <li>cape rock hyrax</li>
+    </ul>
+
+      <ul>
+        <li>Eurasian eagle-owl</li>
+    </ul>
+
+      <ul>
+        <li>Japanese quail</li>
+    </ul>
+
+      <ul>
+        <li>fugu</li>
+    </ul>
+
+      <ul>
+        <li>Asian bonytongue</li>
+    </ul>
+
+      <ul>
+        <li>blue-ringed sea krait</li>
+    </ul>
+
+      <ul>
+        <li>mouse</li>
+    </ul>
+
+      <ul>
+        <li>Agassiz's desert tortoise</li>
+    </ul>
+
+      <ul>
+        <li>lyretail cichlid</li>
+    </ul>
+
+      <ul>
+        <li>coho salmon</li>
+    </ul>
+
+    </p>
+
+  </body>
+</html>
+
+
+*TEST 4
+
+*Input
+    http://127.0.0.1:8080/listSpecies?limit=11
+
+*Output
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>LIST OF SPECIES IN THE BROWSER</title>
+  </head>
+  <body style="background-color: lightblue;">
+    <p>The total number of species in the ensembl is: 310</p>
+    <p>The limit you have selected is: 11</p>
+    <p>The names of the species are:
+
+      <ul>
+        <li>little spotted kiwi</li>
+    </ul>
+
+      <ul>
+        <li>Indian glassy fish</li>
+    </ul>
+
+      <ul>
+        <li>blue tit</li>
+    </ul>
+
+      <ul>
+        <li>narwhal</li>
+    </ul>
+
+      <ul>
+        <li>American beaver</li>
+    </ul>
+
+      <ul>
+        <li>lumpfish</li>
+    </ul>
+
+      <ul>
+        <li>Chinese hamster</li>
+    </ul>
+
+      <ul>
+        <li>channel bull blenny</li>
+    </ul>
+
+      <ul>
+        <li>Golden Hamster</li>
+    </ul>
+
+      <ul>
+        <li>wild yak</li>
+    </ul>
+
+      <ul>
+        <li>Siamese fighting fish</li>
+    </ul>
+
+    </p>
+
+  </body>
+</html>
 
 
 - - - -> Karyotype endpoint
