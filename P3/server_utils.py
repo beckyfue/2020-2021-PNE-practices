@@ -23,29 +23,33 @@ def get(cs, list_sequences, argument):
     cs.send(str(response).encode())
 
 def info(cs, argument):
-    print_colored("INFO", "yellow")
-    sequence = Seq.Seq(argument)
-    response = "Sequence: " + str(sequence) + "\nTotal length: " + str(sequence.len())
+    try:
+        print_colored("INFO", "yellow")
+        sequence = Seq.Seq(argument)
+        response = "Sequence: " + str(sequence) + "\nTotal length: " + str(sequence.len())
 
-    # other possible solution
-    #sol_a = "\nA: " + str(sequence.count_bases()[0]) + " (" + str(sequence.percentage()[0]) + "%)\n"
-    #sol_c = "C: " + str(sequence.count_bases()[1]) + " (" + str(sequence.percentage()[1]) + "%)\n"
-    #sol_g = "G: " + str(sequence.count_bases()[2]) + " (" + str(sequence.percentage()[2]) + "%)\n"
-    #sol_t = "T: " + str(sequence.count_bases()[3]) + " (" + str(sequence.percentage()[3]) + "%)\n"
-    #answer = response + sol_a + sol_c + sol_g + sol_t
-    #print(answer)
-    #cs.send(str(answer).encode())
+        # other possible solution
+        #sol_a = "\nA: " + str(sequence.count_bases()[0]) + " (" + str(sequence.percentage()[0]) + "%)\n"
+        #sol_c = "C: " + str(sequence.count_bases()[1]) + " (" + str(sequence.percentage()[1]) + "%)\n"
+        #sol_g = "G: " + str(sequence.count_bases()[2]) + " (" + str(sequence.percentage()[2]) + "%)\n"
+        #sol_t = "T: " + str(sequence.count_bases()[3]) + " (" + str(sequence.percentage()[3]) + "%)\n"
+        #answer = response + sol_a + sol_c + sol_g + sol_t
+        #print(answer)
+        #cs.send(str(answer).encode())
 
 
-    list_letters = ["A", "C", "G", "T"]
-    print(response)
-    sol = " "
-    for i in range(0, 4):
-        sol += "\n" + list_letters[i] + ":" + str(sequence.count_bases()[i]) + " (" + str(sequence.percentage()[i]) + "%)"
-        i += 1
-    print(sol)
-    ans = response + sol
-    cs.send(str(ans).encode())
+        list_letters = ["A", "C", "G", "T"]
+        print(response)
+        sol = " "
+        for i in range(0, 4):
+            sol += "\n" + list_letters[i] + ":" + str(sequence.count_bases()[i]) + " (" + str(sequence.percentage()[i]) + "%)"
+            i += 1
+        print(sol)
+        ans = response + sol
+        cs.send(str(ans).encode())
+    except ZeroDivisionError:
+        cs.send(str("Not valid sequence").encode())
+        print("This is not an appropriate sequence")
 
 def comp(cs, argument):
     print_colored("COMP", "yellow")
